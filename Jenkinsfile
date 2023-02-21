@@ -2,7 +2,6 @@ pipeline {
     agent {
         docker{
             image 'mongo'
-            -p 8080:8080
         }
     }
     stages {
