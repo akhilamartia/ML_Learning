@@ -1,11 +1,8 @@
 pipeline {
-    agent {
-        docker {
-            image 'mongo'
-        }
+    agent any
     }
     stages {
-        stage('build') {
+        stage('mong connect') {
             steps {
                 sh 'mongo /home/akhilamartia/mongo_shell/ex1.js'
             }
