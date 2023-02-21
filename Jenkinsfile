@@ -1,15 +1,21 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'mongo:2'
+            args '-p 27017:27017'
+        }
+    }
     stages {
-        stage('mong connect') {
+        stage('mongo connect') {
             steps {
-            node('census && docker') {
-                docker.image('mongo:2').withRun('-p 27017:27017') { container ->
-                withEnv(customEnv) {
-                        sh "mongo --version"
-                 }
-                }
-            }
+                sh 'mongo --version'
+//             node('census && docker') {
+//                 docker.image('mongo:2').withRun('-p 27017:27017') { container ->
+//                 withEnv(customEnv) {
+//                         sh "mongo --version"
+//                  }
+//                 }
+//             }
             }
         }
     }
