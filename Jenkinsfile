@@ -1,9 +1,14 @@
 pipeline {
-    agent any
+    agent {
+        docker{
+            image 'mongo'
+            -p 8080:8080
+        }
+    }
     stages {
         stage('mong connect') {
             steps {
-                sh 'mongosh < /home/akhilamartia/mongo_shell/ex1.js'
+                sh 'mongo --version'
             }
         }
     }
