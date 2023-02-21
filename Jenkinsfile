@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    }
     stages {
         stage('mong connect') {
             node('census && docker') {
@@ -8,13 +7,12 @@ pipeline {
                 withEnv(customEnv) {
                         sh "mongo --version"
                  }
+                }
+            }
+        }
     }
-
-    /* .. */
-}
+        
 //             steps {
 //                 sh 'mongo --version'
 //             }
-        }
-    }
 }
